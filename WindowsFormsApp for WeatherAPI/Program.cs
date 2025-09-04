@@ -12,7 +12,7 @@ namespace WindowsFormsApp_for_WeatherAPI
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Master()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

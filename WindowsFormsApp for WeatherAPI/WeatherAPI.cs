@@ -84,4 +84,5 @@ namespace WeatherApi
             var filePath = Path.Combine(dir, $"{city}_forecast_data.txt");
             File.WriteAllText(filePath, data);
         }
-    } //
+    }
+}

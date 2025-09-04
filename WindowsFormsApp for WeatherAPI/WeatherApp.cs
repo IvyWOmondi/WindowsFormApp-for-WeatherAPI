@@ -58,9 +58,12 @@ namespace WeatherApi
                 return;
             }
 
-            if (data.cod != 200)
+            // Fix: Access "cod" property using indexer for JObject
+            var codToken = data["cod"];
+            int cod = codToken != null && int.TryParse(codToken.ToString(), out int result) ? result : 0;
+            if (cod != 200)
             {
-                MessageBox.Show(data.message ?? "Failed to get weather data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(data["message"]?.ToString() ?? "Failed to get weather data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -84,9 +87,12 @@ namespace WeatherApi
                 return;
             }
 
-            if (data.cod != "200")
+            // Fix: Access "cod" property using indexer for JObject
+            var codToken = data["cod"];
+            string cod = codToken != null ? codToken.ToString() : "";
+            if (cod != "200")
             {
-                MessageBox.Show(data.message ?? "Failed to get forecast data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(data["message"]?.ToString() ?? "Failed to get forecast data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
